@@ -28,4 +28,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='get_token'),
     path('api/token/reresh/', TokenRefreshView.as_view(), name='refresh'),
     path('api-auth/', include('rest_framework.urls')),
+    # If the URL contains api/ but it is not any of
+    # the above urls, use api.urls instead
+    path('api/', include('api.urls')),
 ]

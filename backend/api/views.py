@@ -1,8 +1,37 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer
+from .serializers import UserSerializer, NoteSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from .models import Note
+
+# ListCreateView means it will list or create
+class NoteListCreate(generics.ListCreateAPIView):
+    serializer_class = NoteSerializer
+    # You cannot call this root unless you're authenticated
+    # and you pass a valid JWT token
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        # Filter notes and only get notes
+        # created by this user
+        return Note.objects.filter(author=user)
+    
+    def perform_create(self, serializer):
+        if serializer.is_valid():
+            serializer.save(author=self.request.user)
+        else:
+            print(serializer.errors)
+
+class NoteDelete(generics.DestroyAPIView):
+    serializer_class = NoteSerializer
+    permission_classes = [IsAuthenticated]
+
+    # Used to make sure you can only delete your own notes
+    def get_queryset(self):
+        user = self.request.user
+        return Note.objects.filter(author=user)
 
 # Create your views here.
 class CreateUserView(generics.CreateAPIView):

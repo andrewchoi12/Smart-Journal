@@ -4,6 +4,7 @@ from rest_framework import generics
 from .serializers import UserSerializer, NoteSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Note
+from .utils import analyze_sentiment
 
 # ListCreateView means it will list or create
 class NoteListCreate(generics.ListCreateAPIView):
@@ -20,7 +21,11 @@ class NoteListCreate(generics.ListCreateAPIView):
     
     def perform_create(self, serializer):
         if serializer.is_valid():
-            serializer.save(author=self.request.user)
+            note = serializer.save(author=self.request.user)
+            sentiment = analyze_sentiment(note.content)
+            print('setiment: ', sentiment)
+            note.sentiment = sentiment
+            note.save()
         else:
             print(serializer.errors)
 

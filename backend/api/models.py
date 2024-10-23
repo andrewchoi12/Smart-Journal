@@ -18,5 +18,7 @@ class Note(models.Model):
     # that references all of its notes (----.notes)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notes')
     
+    sentiment = models.CharField(max_length=10, blank=True)
+
     def __str__(self):
         return self.title

@@ -1,4 +1,13 @@
 /* Container for the whole page */
+
+#top-text {
+    text-align: left;
+}
+
+#create-text {
+    text-align: center;
+}
+
 div {
     font-family: Arial, sans-serif;
   }

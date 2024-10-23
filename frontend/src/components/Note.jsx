@@ -8,7 +8,6 @@ function Note({ note, onDelete }) {
         <p className="note-title">{note.title}</p>
         <p className="note-content">{note.content}</p>
         <p className="note-date">{formattedDate}</p>
-        <p className="note-sentiment">{note.sentiment}</p>
         <button className="delete-button" onClick={() => onDelete(note.id)}>
             Delete
         </button>

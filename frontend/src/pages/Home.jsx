@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import api from "../api"
 import Note from "../components/Note"
 import "../styles/Home.css"
+import SentimentCalendar from "../components/Calendar"
 
 function Home() {
     const [notes, setNotes] = useState([])
@@ -39,13 +40,8 @@ function Home() {
     }
 
     return <div>
-        <div>
-            <h2>Notes</h2>
-            {notes.map((note) => (
-                <Note note={note} onDelete={deleteNote} key={note.id} />
-            ))}
-        </div>
-        <h2>Create a Note</h2>
+        <h1 id="top-text">Emotion Diary</h1>
+        <h2 id="create-text">Create an Entry for Today</h2>
         <form onSubmit={createNote}>
             <label htmlFor="title">Title:</label>
             <br />
@@ -69,6 +65,13 @@ function Home() {
             <br />
             <input type="submit" value="Submit"></input>
         </form>
+        <SentimentCalendar notes={notes}/>
+        <div>
+            <h2>Notes</h2>
+            {notes.map((note) => (
+                <Note note={note} onDelete={deleteNote} key={note.id} />
+            ))}
+        </div>
     </div>
 }
 

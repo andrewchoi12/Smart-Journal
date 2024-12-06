@@ -63,7 +63,7 @@
 }
 
 .react-calendar__tile--active {
-    color: red
+    color: blue;
 }
 
 .react-calendar__tile--now {

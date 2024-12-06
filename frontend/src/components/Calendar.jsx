@@ -71,7 +71,7 @@ function SentimentCalendar( {notes} ) {
                 )}
             />
             <div class="today-notes">
-                <h2>Today's Notes</h2>
+                <h2>Notes for {value.toDateString()}</h2>
                 {selectedNotes.length > 0 ? (
                     <div>
                         {selectedNotes.map((note) => (

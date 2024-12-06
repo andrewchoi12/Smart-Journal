@@ -8,6 +8,7 @@ function Home() {
     const [notes, setNotes] = useState([])
     const [content, setContent] = useState("")
     const [title, setTitle] = useState("")
+    const [showNotes, setShowNotes] = useState(false);
 
     useEffect(() => {
         getNotes();
@@ -39,12 +40,16 @@ function Home() {
         }).catch((error) => alert(error))
     }
 
+    const toggleNotes = () => {
+        setShowNotes(!showNotes);
+    };
+
     return <div>
-        <h1 id="top-text">Emotion Diary</h1>
+        <h1 id="top-text">Smart Journal</h1>
+        <SentimentCalendar notes={notes}/>
         <h2 id="create-text">Create an Entry for Today</h2>
         <form onSubmit={createNote}>
-            <label htmlFor="title">Title:</label>
-            <br />
+            <label class ="title" htmlFor="title">Title:</label>
             <input
                 type="text" 
                 id="title" 
@@ -54,7 +59,6 @@ function Home() {
                 value={title}
             />
             <label htmlFor="content">Content:</label>
-            <br />
             <textarea 
                 id="content" 
                 name="content" 
@@ -65,13 +69,20 @@ function Home() {
             <br />
             <input type="submit" value="Submit"></input>
         </form>
-        <SentimentCalendar notes={notes}/>
-        <div>
-            <h2>Notes</h2>
-            {notes.map((note) => (
-                <Note note={note} onDelete={deleteNote} key={note.id} />
-            ))}
+
+        <div class="show-notes-container">
+            <button class="show-notes-button" onClick={toggleNotes}>
+                {showNotes ? "Hide All Notes" : "Show All Notes"}
+            </button>
         </div>
+        {showNotes && (
+                <div>
+                    <h2 className="all-notes">All Notes</h2>
+                    {notes.map((note) => (
+                        <Note note={note} onDelete={deleteNote} key={note.id} />
+                    ))}
+                </div>
+            )}
     </div>
 }
 

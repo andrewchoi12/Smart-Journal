@@ -38,7 +38,6 @@ class NoteDelete(generics.DestroyAPIView):
         user = self.request.user
         return Note.objects.filter(author=user)
 
-# Create your views here.
 class CreateUserView(generics.CreateAPIView):
     # List of all diff objects we look at
     # to make sure we don't create a duplicate

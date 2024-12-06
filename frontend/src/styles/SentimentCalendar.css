@@ -1,4 +1,5 @@
-/* SentimentCalendar.css */
+@import url('https://fonts.googleapis.com/css2?family=Arsenal&family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arsenal&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans&display=swap');
 
 .calendar {
     margin: 40px auto auto;
@@ -9,39 +10,96 @@
 }
 
 .react-calendar {
-    margin: 40px auto auto;
-    padding: 5px 0px;
+    margin: 40px auto;
     align-items: center;
-    width: 100%;
-    max-width: 400px; /* Set maximum width */
-    border: 1px solid #ccc; /* Add border to the calendar */
-    border-radius: 8px; /* Round corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+    width: 100%; 
+    max-width: 1000px; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem; 
+    padding: 20px; 
+    font-family: Poppins;
 }
 
+.react-calendar__navigation button{
+    font-family: Poppins;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 0px 7px 0px 7px;
+}
+
+.react-calendar__navigation button.react-calendar__navigation__label {
+    font-size: 2rem;
+}
+
+
 .react-calendar__month-view__days {
-    display: grid; /* Use grid for days */
-    grid-template-columns: repeat(7, 1fr); /* 7 columns for days of the week */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); 
+    grid-auto-rows: 100px; 
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+    color: #c6c1c1; 
 }
 
 .react-calendar__tile {
-    height: 80px; /* Set a height for each tile */
+    background-color: white;
+    height: 110px; 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Center content */
-    border: 1px solid transparent; /* Add a border for hover effect */
-    transition: border 0.3s; /* Smooth transition for border */
+    justify-content: flex-start; 
+    align-items: flex-end;
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ddd; 
+    transition: background-color 0.3s, border 0.3s;
+    font-size: 1rem; 
 }
 
 .react-calendar__tile:hover {
-    border: 1px solid #007bff; /* Highlight tile on hover */
+    border: 1px solid #007bff; 
 }
 
 .react-calendar__tile--active {
-    background-color: white;
+    color: red
 }
 
 .react-calendar__tile--now {
-    background-color: white;
+    color: red
 }
+
+.emoji-container {
+    position: absolute; 
+    top: 20; 
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px; 
+    z-index: 1; 
+}
+
+
+.react-calendar__month-view__weekdays__weekday {
+    display: flex;       
+    justify-content: center; 
+    align-items: center;  
+}
+
+.react-calendar__month-view__weekdays abbr{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.today-note {
+    border: 1px solid black;
+    width: 500px; 
+    max-width: 100%; 
+    margin: 10px auto; 
+    padding-bottom: 10px;
+}
+

@@ -48,7 +48,7 @@ function Home() {
         <h1 id="top-text">Smart Journal</h1>
         <SentimentCalendar notes={notes}/>
         <h2 id="create-text">Create an Entry for Today</h2>
-        <form onSubmit={createNote}>
+        <form class="note-form" onSubmit={createNote}>
             <label class ="title" htmlFor="title">Title:</label>
             <input
                 type="text" 

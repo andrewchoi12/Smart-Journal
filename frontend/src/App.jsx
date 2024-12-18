@@ -1,9 +1,9 @@
 import react from "react"
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
-import Login from "./pages/login"
-import Register from "./pages/register"
-import Home from "./pages/Home"
-import NotFound from "./pages/NotFound"
+import Login from "./pages/Login.jsx"
+import Register from "./pages/Register.jsx"
+import Home from "./pages/Home.jsx"
+import NotFound from "./pages/NotFound.jsx"
 import ProtectedRoute from "./components/ProtectedRoute"
 
 

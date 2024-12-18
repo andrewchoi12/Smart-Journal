@@ -3,13 +3,10 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI, OpenAIError
 
-load_dotenv(dotenv_path="../.env")
-#openai.api_key = os.getenv("OPENAI_API_KEY")
-#client = OpenAI(
-#    api_key = os.getenv("OPENAI_API_KEY"),
-#)
-
-api_key = "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"
+load_dotenv(dotenv_path=".env")
+client = OpenAI(
+    api_key = os.getenv("OPENAI_API_KEY")
+)
 
 def analyze_sentiment(note_text):
     try:
